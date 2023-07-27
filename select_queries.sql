@@ -81,7 +81,6 @@ WHERE crs.DCode = 2 # Yazılım Mühendisliği bölümü kodu
 GROUP BY stu.SId
 ORDER BY TotalCredits DESC;
 
-# ORİJİNAL / 5 TABLO
 # 11) Bilgisayar mühendisliği bölümünün en yüksek kredili ders(ler)ininin ders kodu, ismi,
 # kredisi, varsa section'a bağlı hocalarının isimleri ve sectionların sınıf mevcudu bilgilerinin getirilmesi
 SELECT sec.SecId, crs.CoName, crs.Credits, ins.IName, COUNT(tks.SId) AS StudentCount
@@ -94,7 +93,6 @@ WHERE dpt.DCode = 1 AND crs.Credits = (SELECT MAX(Credits) FROM course WHERE crs
 GROUP BY sec.SecId
 ORDER BY StudentCount DESC;
 
-# ORİJİNAL
 # 12) Her departmandaki akademisyen sayısı, öğrencisi sayısı ve oranı sıralı şekilde gösterimi
 SELECT DepName, DepCode, STU_COUNT, SUM(COUNTT) AS INS_COUNT, STU_COUNT/SUM(COUNTT) AS ORAN FROM
 (SELECT dpt.DName AS DepName, dpt.DCode AS DepCode, COUNT(DISTINCT(dpt.DCode)) AS COUNTT, COUNT(stu.SId) AS STU_COUNT
@@ -116,7 +114,6 @@ GROUP BY crs.CCode)
 AS A GROUP BY CoCode, CoName
 ORDER BY StuCount DESC;
 
-# ORİJİNAL
 # 14) Bir fakültedeki derslerin not ortalamasına göre sıralaması
 SELECT crs.CoName AS CourseName,
        AVG(CASE
@@ -139,7 +136,6 @@ GROUP BY crs.CoName
 ORDER BY AverageGrade DESC;
 
 
-# ORİJİNAL
 # 15) Veritabanı Yönetimi dersini alan öğrencilerin course bazında hocaları tercih etme yüzdeleri
 SELECT ins.IName AS InstructorName,
        COUNT(tks.SId) AS NumberOfStudents,
